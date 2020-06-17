@@ -1,4 +1,5 @@
- * Purpose: This program translates messages with no special characters. Pig latin and Morse code will be translated automatically.
+
+/* Purpose: This program translates messages with no special characters. Pig latin and Morse code will be translated automatically.
  */
 
 //package for input
