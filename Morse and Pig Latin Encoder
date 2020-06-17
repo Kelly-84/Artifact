@@ -1,0 +1,77 @@
+ * Purpose: This program translates messages with no special characters. Pig latin and Morse code will be translated automatically.
+ */
+
+//package for input
+import java.util.Scanner;
+
+public class EnglishToPigLatinAndMorseCodeTranslatorTest {
+	public static void main (String[] args) {
+		Scanner input = new Scanner (System.in);
+		//prompt for message
+		System.out.print("Enter phrase to convert to Morse Code: ");
+		String englishPhrase = input.nextLine();
+		//gives phrase
+		System.out.printf("Given English Phrase: %s%n", englishPhrase);
+		//provides pig latin transation
+		System.out.printf("The Corresponding Pig Latin: %s%n", translateToPigLatin(englishPhrase));
+		//provides morse code translation
+		System.out.printf("The Corresponding Morse Code: %s%n", translateToMorseCode(englishPhrase));
+	}
+
+
+static String translateToPigLatin(String englishPhrase) {
+	//Initialize to nothing
+	String result = " ";
+	//variable is made to a string
+    String str = englishPhrase;
+    //removes spaces from message
+	String[] words = str.split(" ");
+	
+	//length of the message is found
+	int Length = words.length;
+	//runs through the entire phrase
+	for (int i = 0; i < Length; i++){
+		//begins with the second letter for the whole word, adds the first letter to the end, adds "ay" with a space, and adds the completed word to th result to continue to the next word for the phrase
+	    result += words[i].substring(1) + words[i].charAt(0) +"ay ";
+	  
+	}
+	//returns the phrases translated
+	return result;
+}
+
+//morse code
+static String translateToMorseCode(String EnglishPhrase){
+	//Initialize to nothing
+	String result = " ";
+	//variable is made to a string
+	String str = EnglishPhrase;
+	//capitalizes the phrase for decoder
+	str = str.toUpperCase();
+	//removes spaces from phrase
+	String[] words = str.split("");
+	
+	//code array containing the alphabet and numbers in morse form
+    String[] Codes = new String[]{".-", "-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--..",/*numbers*/".----","..---","...--","....-",".....","-....","--...","---..","----.","-----"};
+    //alphabet and numbers on the same index as Codes
+    String[] Alpha = new String[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", /*NUMBERS*/"1","2","3","4","5","6","7","8","9","0"};
+    
+    //runs through the entire phrase
+    for(int i = 0; i < str.length(); i++){
+    	//runs through the alphabet
+        for(int j = 0; j < 35; j++){
+       //checks if there is a letter that matches the word
+       if(words[i].equals(Alpha[j])){
+    	   //once found, the index of the alphabet containing a letter is put in the morse code array to find the corrisponding code
+           words[i] = Codes[j];
+           //add the letter to overwrite the letter with the corrisponding code
+           words[i] += Codes[j];
+           //adds the new code to the results with a space
+           result += Codes[j] + "  ";
+        }
+        }
+    	}
+    //prints out the morse converted code
+	return result;
+}
+	
+}
