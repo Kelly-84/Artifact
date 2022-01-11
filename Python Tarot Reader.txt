@@ -165,8 +165,14 @@ cardslist = [
     ,'Knight of Pentacles Reversal\nlaziness, obsessiveness, work without reward\nWhen the reversed Knight of Pentacles shows up in a reading, the traits that were once positive in the upright position are now taken to the extreme. You may feel stuck in your own routine, and bored of everything that surrounds you. You may desire a change of scenery in order to avoid this tiring repetition. The Knight of Pentacles reversed could also indicate that you have totally ignored many serious aspects of your life. Financial or personal issues are often be neglected in favor of work matters when this card appears reversed.'
     ,'The Philosophy\n'
     ,'The Philosophy Reversal\n\n'] 
-
 x=int(input("How many cards do you want?"))
+if x < 0:
+    print("Negetive numbers are not allowed.\n")
+    x=int(input("How many cards do you want?"))
+while x == 0:
+    print("Okay. Have a nice day.")
+    break
+    
 y = 1
 while 0 < x:
     
